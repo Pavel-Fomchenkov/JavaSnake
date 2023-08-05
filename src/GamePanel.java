@@ -42,7 +42,6 @@ public class GamePanel extends JPanel implements ActionListener {
         timer.start();
     }
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
         draw(g);
     }
@@ -115,7 +114,7 @@ public class GamePanel extends JPanel implements ActionListener {
             running = false;
         }
         //checks if head touches right border
-        if(x[0] > SCREEN_WIDTH) {
+        if(x[0] >= SCREEN_WIDTH) {
             running = false;
         }
         //checks if head touches top border
@@ -123,7 +122,7 @@ public class GamePanel extends JPanel implements ActionListener {
             running = false;
         }
         //checks if head touches bottom border
-        if(y[0] > SCREEN_HEIGHT) {
+        if(y[0] >= SCREEN_HEIGHT) {
             running = false;
         }
         if(!running) {
