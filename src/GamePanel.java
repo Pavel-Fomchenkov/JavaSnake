@@ -181,12 +181,8 @@ public class GamePanel extends JPanel implements ActionListener {
                     break;
                 case KeyEvent.VK_ENTER:
                     if(!running) {
-                        for (int i = 0; i < x.length; i++) {
-                            x[i] = 0;
-                        }
-                        for (int i = 0; i < y.length; i++) {
-                            y[i] = 0;
-                        }
+                        Arrays.fill(x, 0);
+                        Arrays.fill(y, 0);
                         bodyParts = 6;
                         applesEaten = 0;
                         direction = 'R';
