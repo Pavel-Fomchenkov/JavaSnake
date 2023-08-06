@@ -7,6 +7,7 @@ import java.awt.event.*;
 //import java.awt.event.KeyAdapter;
 //import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
@@ -33,7 +34,6 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         startGame();
-
     }
     public void startGame() {
         newApple();
@@ -141,6 +141,10 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setFont(new Font("Ink Free", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("Game Over", (SCREEN_WIDTH - metrics2.stringWidth("Game Over"))/2, SCREEN_HEIGHT / 2);
+        g.setColor(Color.PINK);
+        g.setFont(new Font("Ink Free", Font.BOLD, 25));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("Press Enter to start again", (SCREEN_WIDTH - metrics3.stringWidth("Press Enter to start again"))/2, SCREEN_HEIGHT - g.getFont().getSize() * 2);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -173,6 +177,21 @@ public class GamePanel extends JPanel implements ActionListener {
                 case KeyEvent.VK_DOWN:
                     if(direction != 'U') {
                         direction = 'D';
+                    }
+                    break;
+                case KeyEvent.VK_ENTER:
+                    if(!running) {
+                        for (int i = 0; i < x.length; i++) {
+                            x[i] = 0;
+                        }
+                        for (int i = 0; i < y.length; i++) {
+                            y[i] = 0;
+                        }
+                        bodyParts = 6;
+                        applesEaten = 0;
+                        direction = 'R';
+                        running = true;
+                        startGame();
                     }
                     break;
             }
