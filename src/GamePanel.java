@@ -186,7 +186,6 @@ public class GamePanel extends JPanel implements ActionListener {
                         bodyParts = 6;
                         applesEaten = 0;
                         direction = 'R';
-                        running = true;
                         startGame();
                     }
                     break;
